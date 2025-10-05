@@ -1,0 +1,181 @@
+{{ define "main" }}
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    background: #0f0f0f;
+    color: #ffffff;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.5;
+  }
+
+  .trading-header {
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/images/happy-trading.png');
+    background-size: cover;
+    background-position: center;
+    padding: 60px 20px;
+    text-align: center;
+    border-bottom: 2px solid #00ff64;
+  }
+
+  .trading-header h1 {
+    font-size: 2.8em;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+  }
+
+  .trading-header p {
+    font-size: 1.2em;
+    color: #cccccc;
+    max-width: 600px;
+    margin: 0 auto;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+  }
+
+  .main-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 80px 20px;
+  }
+
+  .content-grid {
+    display: grid;
+    gap: 40px;
+    margin-bottom: 80px;
+  }
+
+  .service-item {
+    padding: 32px 0;
+    border-bottom: 1px solid #222222;
+  }
+
+  .service-item:last-child {
+    border-bottom: none;
+  }
+
+  .service-title {
+    font-size: 1.2em;
+    font-weight: 500;
+    margin-bottom: 12px;
+    color: #00ff64;
+  }
+
+  .service-description {
+    color: #aaaaaa;
+    font-size: 1em;
+    max-width: 600px;
+  }
+
+  .action-section {
+    text-align: center;
+    padding-top: 40px;
+    border-top: 1px solid #222222;
+  }
+
+  .primary-button {
+    background: #00ff64;
+    color: #000000;
+    padding: 14px 32px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1em;
+    font-weight: 500;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+  }
+
+  .primary-button:hover {
+    opacity: 0.9;
+  }
+
+  .trading-footer {
+    background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('/images/telegram_view.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 60px 20px;
+    text-align: center;
+    border-top: 2px solid #00ff64;
+    margin-top: 80px;
+  }
+
+  .footer-content {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .footer-title {
+    font-size: 1.8em;
+    font-weight: 500;
+    margin-bottom: 20px;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+  }
+
+  .footer-text {
+    color: #cccccc;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+  }
+
+  .footer-button {
+    background: #ffffff;
+    color: #000000;
+    padding: 12px 28px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1em;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .footer-button:hover {
+    background: #00ff64;
+  }
+</style>
+
+<header class="trading-header">
+  <h1>AI Market Intelligence</h1>
+  <p>Professional market analysis for serious traders. Clean insights, precise execution.</p>
+</header>
+
+<div class="main-container">
+  <main class="content-grid">
+    <div class="service-item">
+      <h2 class="service-title">Index Coverage</h2>
+      <p class="service-description">SPY, QQQ, and NASDAQ 100 analysis with institutional flow tracking and sector rotation signals.</p>
+    </div>
+
+    <div class="service-item">
+      <h2 class="service-title">Individual Equities</h2>
+      <p class="service-description">AAPL, GOOGL, TSLA, and MSFT coverage focusing on high-liquidity opportunities and momentum plays.</p>
+    </div>
+
+    <div class="service-item">
+      <h2 class="service-title">Market Structure</h2>
+      <p class="service-description">Multi-asset analysis identifying divergences and correlation breakdowns for superior timing.</p>
+    </div>
+  </main>
+
+  <div class="action-section">
+    <a href="https://t.me/your_trading_signals" class="primary-button">Get Access</a>
+  </div>
+</div>
+
+<footer class="trading-footer">
+  <div class="footer-content">
+    <h2 class="footer-title">Ready to Trade Smarter?</h2>
+    <p class="footer-text">Join professional traders using data-driven market intelligence for consistent results.</p>
+    <a href="https://t.me/your_trading_signals" class="footer-button">
+  <span class="telegram-icon">📱</span>Start Your Analysis
+</a>
+  </div>
+</footer>
+
+{{ end }}

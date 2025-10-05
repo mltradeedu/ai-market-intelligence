@@ -1,0 +1,479 @@
+{{ define "main" }}
+<style>
+    /* Contact Page Specific Styles */
+
+    /* Hero Section */
+    .contact-hero {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 80px 20px;
+        text-align: center;
+        color: white;
+        margin-bottom: 60px;
+    }
+
+    .contact-hero h1 {
+        font-size: 3rem;
+        margin-bottom: 15px;
+        font-weight: 800;
+    }
+
+    .contact-hero h3 {
+        font-size: 1.4rem;
+        opacity: 0.95;
+        font-weight: 400;
+    }
+
+    /* Main Container */
+    .contact-container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 20px 80px;
+    }
+
+    /* Content Grid */
+    .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        margin-bottom: 50px;
+    }
+
+    /* Contact Cards */
+    .contact-card {
+        background: white;
+        border-radius: 15px;
+        padding: 35px;
+        box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+        border-left: 5px solid #667eea;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .contact-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 35px rgba(0,0,0,0.12);
+    }
+
+    .contact-card h2 {
+        color: #1a1a2e;
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .contact-card h3 {
+        color: #2c3e50;
+        font-size: 1.3rem;
+        margin: 25px 0 15px;
+        font-weight: 600;
+    }
+
+    .contact-card p,
+    .contact-card ul {
+        color: #555;
+        line-height: 1.8;
+    }
+
+    .contact-card ul {
+        list-style: none;
+        padding: 0;
+        margin: 15px 0;
+    }
+
+    .contact-card li {
+        padding: 8px 0 8px 25px;
+        position: relative;
+    }
+
+    .contact-card li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: #667eea;
+        font-weight: bold;
+    }
+
+    /* Email Link Styling */
+    .email-link {
+        display: inline-block;
+        background: linear-gradient(135deg, #00d4ff, #667eea);
+        color: white;
+        padding: 12px 30px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: 600;
+        margin: 15px 0;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .email-link:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+    }
+
+    /* Icon Badges */
+    .icon-badge {
+        font-size: 2rem;
+    }
+
+    /* Response Time Section */
+    .response-times {
+        background: #f8f9ff;
+        border-radius: 15px;
+        padding: 30px;
+        margin: 40px 0;
+    }
+
+    .response-times h2 {
+        color: #1a1a2e;
+        font-size: 1.8rem;
+        margin-bottom: 25px;
+    }
+
+    .time-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+
+    .time-item {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        border-left: 4px solid #667eea;
+    }
+
+    .time-item h3 {
+        color: #667eea;
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+    }
+
+    .time-item p {
+        color: #555;
+        margin: 5px 0;
+    }
+
+    .time-item strong {
+        color: #1a1a2e;
+    }
+
+    /* Telegram CTA */
+    .telegram-cta {
+        background: linear-gradient(135deg, #0088cc, #00aced);
+        color: white;
+        padding: 50px 40px;
+        border-radius: 20px;
+        text-align: center;
+        margin: 50px 0;
+        box-shadow: 0 10px 40px rgba(0, 136, 204, 0.2);
+    }
+
+    .telegram-cta h2 {
+        font-size: 2.2rem;
+        margin-bottom: 15px;
+    }
+
+    .telegram-cta ul {
+        list-style: none;
+        padding: 0;
+        margin: 20px 0 30px;
+        display: inline-block;
+        text-align: left;
+    }
+
+    .telegram-cta li {
+        padding: 8px 0;
+        font-size: 1.1rem;
+    }
+
+    .telegram-cta li::before {
+        content: "→";
+        margin-right: 10px;
+        font-weight: bold;
+    }
+
+    .telegram-button {
+        display: inline-block;
+        background: white;
+        color: #0088cc;
+        padding: 15px 40px;
+        border-radius: 40px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 1.2rem;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .telegram-button:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+    }
+
+    /* Important Notes Section */
+    .notes-section {
+        background: white;
+        border-radius: 15px;
+        padding: 40px;
+        box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+        margin: 40px 0;
+    }
+
+    .notes-section h2 {
+        color: #1a1a2e;
+        font-size: 1.8rem;
+        margin-bottom: 30px;
+    }
+
+    .priority-list {
+        background: #f8f9ff;
+        padding: 25px;
+        border-radius: 10px;
+        margin: 20px 0;
+    }
+
+    .priority-list h3 {
+        color: #667eea;
+        margin-bottom: 15px;
+    }
+
+    .priority-list ol {
+        margin-left: 20px;
+        color: #555;
+    }
+
+    .priority-list li {
+        padding: 8px 0;
+        line-height: 1.7;
+    }
+
+    /* Guidelines Box */
+    .guidelines-box {
+        background: #fff9e6;
+        border-left: 4px solid #ffc107;
+        padding: 25px;
+        border-radius: 10px;
+        margin: 20px 0;
+    }
+
+    .guidelines-box h3 {
+        color: #856404;
+        margin-bottom: 15px;
+    }
+
+    .guidelines-box ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .guidelines-box li {
+        padding: 8px 0 8px 25px;
+        position: relative;
+        color: #555;
+    }
+
+    .guidelines-box li::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: #ffc107;
+        font-size: 1.5rem;
+        line-height: 1;
+    }
+
+    /* Privacy Section */
+    .privacy-section {
+        background: linear-gradient(135deg, #2ecc71, #27ae60);
+        color: white;
+        padding: 40px;
+        border-radius: 15px;
+        margin: 40px 0;
+    }
+
+    .privacy-section h2 {
+        color: white;
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .privacy-section ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .privacy-section li {
+        padding: 8px 0 8px 25px;
+        position: relative;
+        font-size: 1.05rem;
+    }
+
+    .privacy-section li::before {
+        content: "🔒";
+        position: absolute;
+        left: 0;
+    }
+
+    /* Final CTA */
+    .final-cta {
+        text-align: center;
+        padding: 50px 20px;
+        background: #f8f9fa;
+        border-radius: 15px;
+        margin-top: 50px;
+    }
+
+    .final-cta h3 {
+        font-size: 2rem;
+        color: #1a1a2e;
+        margin-bottom: 20px;
+    }
+
+    .final-cta p {
+        font-size: 1.1rem;
+        color: #666;
+        margin-bottom: 25px;
+    }
+
+    /* Horizontal Divider */
+    hr {
+        border: none;
+        border-top: 2px solid #e0e0e0;
+        margin: 40px 0;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .contact-hero h1 {
+            font-size: 2.2rem;
+        }
+
+        .contact-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .time-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .contact-container {
+            padding: 0 15px 50px;
+        }
+    }
+</style>
+
+<!-- Hero Section -->
+<section class="contact-hero">
+    <h1>{{ .Title }}</h1>
+    <h3>{{ .Description }}</h3>
+</section>
+
+<!-- Main Container -->
+<div class="contact-container">
+
+    <!-- Direct Contact Section -->
+    <div class="contact-grid">
+        <div class="contact-card">
+            <h2><span class="icon-badge">📧</span> Direct Contact</h2>
+            <h3>General Support & Inquiries</h3>
+            <a href="mailto:support@mltradeedu.com" class="email-link">support@mltradeedu.com</a>
+
+            <ul>
+                <li>Market analysis questions</li>
+                <li>Technical support</li>
+                <li>Account and subscription inquiries</li>
+                <li>Strategy consultation requests</li>
+                <li>Educational resource access</li>
+            </ul>
+        </div>
+
+        <div class="contact-card">
+            <h2><span class="icon-badge">⏰</span> Business Hours</h2>
+            <h3>When We're Available</h3>
+            <p><strong>Monday - Friday:</strong> 8:00 AM - 6:00 PM EST (Market Days)</p>
+            <p><strong>Pre-Market Support:</strong> 7:00 AM - 9:30 AM EST</p>
+            <p><strong>After-Hours:</strong> Limited support for urgent matters</p>
+        </div>
+    </div>
+
+    <!-- Response Times -->
+    <div class="response-times">
+        <h2>🕒 Response Times</h2>
+        <div class="time-grid">
+            <div class="time-item">
+                <h3>Email Response</h3>
+                <p><strong>Standard:</strong> 2-3 business days</p>
+            </div>
+            <div class="time-item">
+                <h3>Emergency Issues</h3>
+                <p><strong>Market Hours:</strong> Immediate attention</p>
+            </div>
+            <div class="time-item">
+                <h3>Technical Support</h3>
+                <p><strong>Response:</strong> Same business day</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Telegram CTA -->
+    <div class="telegram-cta">
+        <h2>💬 Join Our Live Community</h2>
+        <p style="font-size: 1.2rem; margin-bottom: 20px;">Connect with professional traders on Telegram</p>
+        <ul>
+            <li>Real-time market updates</li>
+            <li>Peer-to-peer learning</li>
+            <li>Instant notifications</li>
+        </ul>
+        <a href="{{ .Site.Params.telegram }}" class="telegram-button">Join Intelligence Community →</a>
+    </div>
+
+    <!-- Important Notes -->
+    <div class="notes-section">
+        <h2>📍 Important Notes</h2>
+
+        <div class="priority-list">
+            <h3>Response Priorities</h3>
+            <ol>
+                <li><strong>Emergency Trading Issues</strong> - Immediate attention during market hours</li>
+                <li><strong>Technical Support</strong> - Same business day response</li>
+                <li><strong>General Inquiries</strong> - 2-3 business day</li>
+            </ol>
+        </div>
+
+        <div class="guidelines-box">
+            <h3>What to Include in Your Message</h3>
+            <ul>
+                <li><strong>Clear subject line</strong> describing your inquiry</li>
+                <li><strong>Detailed description</strong> of your question or issue</li>
+                <li><strong>Relevant screenshots</strong> if technical problem</li>
+                <li><strong>Your experience level</strong> for tailored responses</li>
+                <li><strong>Preferred response method</strong> (email/telegram)</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Privacy Section -->
+    <div class="privacy-section">
+        <h2>🔒 Privacy & Security</h2>
+        <p style="margin-bottom: 20px; font-size: 1.1rem;">We take your privacy seriously:</p>
+        <ul>
+            <li>All communications are confidential</li>
+            <li>Trading strategies and positions remain private</li>
+            <li>No sharing of personal information</li>
+            <li>Secure email encryption available upon request</li>
+        </ul>
+    </div>
+
+    <!-- Final CTA -->
+    <div class="final-cta">
+        <h3>Ready to Elevate Your Trading?</h3>
+        <p>Contact us today and start your journey to smarter trading decisions</p>
+        <a href="mailto:support@mltradeedu.com" class="email-link">Email Us Now →</a>
+    </div>
+
+</div>
+
+{{ end }}
