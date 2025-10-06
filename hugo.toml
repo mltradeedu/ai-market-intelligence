@@ -1,4 +1,5 @@
 baseURL = "https://mltradeedu.github.io/ai-market-intelligence/"
+canonifyURLs = true
 languageCode = "en-us"
 title = "AI Market Intelligence"
 
